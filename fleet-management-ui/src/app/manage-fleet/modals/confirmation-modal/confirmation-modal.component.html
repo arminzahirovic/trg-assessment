@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Delete</h1>
+<div mat-dialog-content>
+    Would you like to delete object?
+</div>
+<div mat-dialog-actions>
+    <button
+        mat-flat-button
+        mat-dialog-close>
+        No
+    </button>
+    <button
+        mat-flat-button
+        color="warn"
+        [mat-dialog-close]="true"
+        cdkFocusInitial>
+        Yes
+    </button>
+</div>

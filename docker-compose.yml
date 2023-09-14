@@ -1,0 +1,46 @@
+version: "3"
+services:
+  angular-app:
+    build:
+      context: ./fleet-management-ui
+    ports:
+      - "4200:4200"
+    depends_on:
+      - fleet-service
+      - fleet-simulator
+    networks:
+      - fleet-management-network
+
+  fleet-service:
+    build:
+      context: ./fleet-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - fleetmanagement
+    networks:
+      - fleet-management-network
+
+  fleet-simulator:
+    build:
+      context: ./fleet-simulator
+    ports:
+      - "8081:8081"
+    depends_on:
+      - fleetmanagement
+    networks:
+      - fleet-management-network
+
+  fleetmanagement:
+    image: mysql:latest
+    volumes:
+      - ./sql-init:/docker-entrypoint-initdb.d
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - fleet-management-network
+
+networks:
+  fleet-management-network:
+    driver: bridge

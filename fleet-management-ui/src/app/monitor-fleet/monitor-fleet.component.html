@@ -1,0 +1,15 @@
+<div id="map" class="map"></div>
+<trg-selected-state 
+    *ngIf="selectedState"
+    [state]="selectedState">
+</trg-selected-state>
+<span
+    *ngIf="!selectedState"
+    class="info mat-elevation-z8">
+    Info: Click on marker for more information
+</span>
+<span
+    *ngIf="selectedState"
+    class="info mat-elevation-z8">
+    Info: Click anywhere on map to close marker details
+</span>
