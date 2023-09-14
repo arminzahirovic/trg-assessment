@@ -4,18 +4,22 @@ This repository contains a Docker Compose configuration for running a Fleet Mana
 
 ## Prerequisites
 
-- Docker and Docker Compose installed on your machine.
+- Maven, Docker and Docker Compose installed on your machine.
 
 ## Getting Started
 
 1. Clone this repository to your local machine.
 
-git clone <repository_url>
-cd <repository_directory>
+  git clone <repository_url>
+  cd <repository_directory>
+
+2. Build microservices using maven
+
+   mvn clean package
 
 2. Build and start the application using Docker Compose.
 
-docker-compose up
+  docker-compose up
 
 This command will try to start the following services:
 
